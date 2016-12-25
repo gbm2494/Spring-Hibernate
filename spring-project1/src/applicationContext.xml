@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<!-- define properties here from properties file -->
+	<context:property-placeholder location="classpath:sport.properties"/>
+	
+    <!-- Define your beans here, don't use interfaces, just classes -->
+    <bean id="myFortune" class="com.lov2code.springproject1.HappyFortuneService">
+    </bean>
+    
+    <bean id="myBadFortune" class="com.lov2code.springproject1.BadFortuneService">
+    </bean>
+    
+    <bean id="myCoach" class="com.lov2code.springproject1.BaseballCoach">
+    	<!-- set up constructor injection, ref is constructor arg -->
+    	<constructor-arg ref="myFortune"></constructor-arg>
+    </bean>
+    
+    <bean id="mySoccerCoach" class="com.lov2code.springproject1.SoccerCoach">
+    	<constructor-arg ref="myBadFortune"></constructor-arg>
+    </bean>
+    
+    <bean id="myTrackCoach" class="com.lov2code.springproject1.TrackCoach">
+    	<!-- set up constructor injection -->
+    	<constructor-arg ref="myFortune"></constructor-arg>
+    </bean>
+    
+    <bean id="myCricketCoach" class="com.lov2code.springproject1.CricketCoach">
+    	<!-- setter injection, properties are associated with attributes from classes -->
+    	<property name="fortuneService" ref="myFortune"></property>
+    	
+    	<!-- Literal values for dependency injection 
+    	<property name="emailAddress" value="gaudy@gmail.com"></property>
+    	<property name="team" value="tawkers"></property> -->
+    	
+    	<!-- get values from properties file -->
+    	<property name="emailAddress" value="${foo.email}"></property>
+    	<property name="team" value="${foo.team}"></property>
+    	
+    </bean>
+    
+</beans>
+
+
+
+
+
