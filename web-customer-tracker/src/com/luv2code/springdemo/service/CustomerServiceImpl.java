@@ -22,4 +22,25 @@ public class CustomerServiceImpl implements CustomerService {
 		return customer.getCustomers();
 	}
 
+	@Override
+	@Transactional
+	public void saveCustomer(Customer theCustomer) {
+		customer.saveCustomer(theCustomer);
+	}
+
+	@Override
+	@Transactional
+	public Customer getCustomer(int id) {
+		return customer.getCustomer(id);
+	}
+
+	@Override
+	@Transactional
+	public void deleteCustomer(int id) {
+		customer.deleteCustomer(id);
+		
+	}
+	
+	
+
 }
