@@ -5,6 +5,8 @@
 <html>
 	<head>
 		<title>List of customers</title>
+		<link type="text/css" rel="stylesheet" 
+		href="${pageContext.request.contextPath}/resources/css/style.css">
 	</head>
 	
 	<body>
@@ -17,22 +19,23 @@
 		</div>
 		
 		<div id="container">
-			<table>
-				<tr>
-					<th>First Name</th>
-					<th>Last Name</th>
-					<th>Email Name</th>
-				</tr>
-				
-				<c:forEach var="tempCust" items="${customers}">
+			<div id="content">
+				<table>
 					<tr>
-						<td>${tempCust.firstName}</td>
-						<td>${tempCust.lastName}</td>
-						<td>${tempCust.email}</td>
+						<th>First Name</th>
+						<th>Last Name</th>
+						<th>Email Name</th>
 					</tr>
-				</c:forEach>
-				
-			</table>
+					
+					<c:forEach var="tempCust" items="${customers}">
+						<tr>
+							<td>${tempCust.firstName}</td>
+							<td>${tempCust.lastName}</td>
+							<td>${tempCust.email}</td>
+						</tr>
+					</c:forEach>
+				</table>
+			</div>
 		</div>
 	</body>
 </html>

@@ -20,6 +20,11 @@
 	<!-- Add support for conversion, formatting and validation support -->
 	<mvc:annotation-driven/>
 
+	<!-- Add to support resources like css in the project
+	location is the physical directory name starting from WebContent.
+	mapping is to start recursion at this point looking for resources -->
+	<mvc:resources location="/resources/" mapping="/resources/**"></mvc:resources>
+	
 	<!-- Define Spring MVC view resolver -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
